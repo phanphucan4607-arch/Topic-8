@@ -113,4 +113,14 @@ php81 -v
 <img width="922" height="177" alt="image" src="https://github.com/user-attachments/assets/abd1dfb5-cd57-4214-a9cf-f63804128459" />
 
 
+#### 🟡 Giai đoạn 2: Tạo "Nhà" (Web) và "Bể chứa" (Database)
+1. Tạo 2 website nơi chứa code 
+
+<img width="1229" height="608" alt="image" src="https://github.com/user-attachments/assets/6f163a6e-c3de-491b-91ab-24ecfaa21ebe" />
+
+2. Tạo 2 Database (Nơi chứa dữ liệu SQL)
+
+<img width="1229" height="608" alt="image" src="https://github.com/user-attachments/assets/925fe91d-f9bf-4d96-bebf-92d5a88ffd70" />
+
+# 🚀 Giai đoạn 3: "Bốc" Source Code vào Server (Dùng Terminal)
 
