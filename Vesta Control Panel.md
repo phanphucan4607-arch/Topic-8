@@ -59,14 +59,58 @@ add-apt-repository ppa:ondrej/php -y
 apt-get update
 
 # 2. Cài đặt PHP 8.1 và các gói cần thiết
+Bước 1: Cài đặt thư viện nền (Dependencies)
 ```
-apt-get install php8.1 php8.1-common php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-curl php8.1-
+apt-get update
 
-gd php8.1-imagick php8.1-cli php8.1-dev php8.1-imap php8.1-mbstring php8.1-opcache php8.1-soap
+apt-get install -y build-essential libxml2-dev libssl-dev libsqlite3-dev \
 
-php8.1-zip php8.1-intl php8.1-bcmath -y
+libcurl4-openssl-dev libpng-dev libjpeg-dev libonig-dev libzip-dev \
 
- 3. Kiểm tra lại phiên bản
-
-php -v
+libreadline-dev libicu-dev
 ```
+Bước 2: Tải và giải nén mã nguồn
+```
+wget https://www.php.net/distributions/php-8.1.27.tar.gz
+
+tar -xvf php-8.1.27.tar.gz
+
+cd php-8.1.27
+```
+
+
+Bước 3: Cấu hình các module (Configure)
+Đây là bước quan trọng nhất để PHP có đủ "chức năng" chạy Laravel và WordPress.
+```
+./configure --prefix=/usr/local/php81 \
+--with-config-file-path=/usr/local/php81 \
+--enable-mbstring \
+--enable-fpm \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
+--with-openssl \
+--with-curl \
+--with-zlib \
+--enable-gd \
+--with-zip \
+--enable-bcmath \
+--enable-intl
+```
+
+Bước 4: Biên dịch và cài đặt (Make)
+```
+make -j$(nproc)
+make install
+```
+Bước 5: Kích hoạt lệnh chạy nhanh (Symlink)
+Bash
+
+ln -s /usr/local/php81/bin/php /usr/bin/php81
+
+🔍 Lệnh kiểm tra cuối cùng
+
+php81 -v
+<img width="922" height="177" alt="image" src="https://github.com/user-attachments/assets/abd1dfb5-cd57-4214-a9cf-f63804128459" />
+
+
+
