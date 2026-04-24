@@ -347,5 +347,21 @@ server {
 EOF
 
 # Restart Nginx
+
+```
+Lệnh cấp SSL Let's Encrypt (Dành cho VestaCP)
+
+Ông chạy 2 lệnh này cho 2 tên miền tương ứng (Nhớ chạy với quyền root nhé):
+
+1. Cho trang WordPress:
+Bash
+
+/usr/local/vesta/bin/v-add-letsencrypt-domain admin wp.phucan.vietnix.tech
+
+2. Cho trang Laravel:
+Bash
+
+/usr/local/vesta/bin/v-add-letsencrypt-domain admin laravel.phucan.vietnix.tech
+```
 nginx -t && systemctl restart nginx
 ````
