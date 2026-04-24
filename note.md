@@ -10,7 +10,21 @@
 
 **đường dẫn chứa Cert của Certbot**
 
++ của laravel: /etc/letsencrypt/live/laravel.phucan.vietnix.tech/
 
+<img width="1194" height="319" alt="image" src="https://github.com/user-attachments/assets/3e07e169-3ed6-45c9-b3b5-7706887af39e" />
+
+
+
++ Cấp cho wordress 
+```
+certbot certonly --webroot -w /home/admin/web/wp.phucan.vietnix.tech/public_html -d wp.phucan.vietnix.tech
+```
+
++ Cấp cho laravel
+```
+certbot certonly --webroot -w /home/admin/web/laravel.phucan.vietnix.tech/public_html/public -d laravel.phucan.vietnix.tech
+```
 
 🛠️  **Lệnh Backup**
 
