@@ -8,6 +8,10 @@
 
 <img width="820" height="641" alt="image" src="https://github.com/user-attachments/assets/850ea06e-0655-44e6-be7b-4b2072ff25cb" />
 
+**đường dẫn chứa Cert của Certbot**
+
+
+
 🛠️  **Lệnh Backup**
 
  đuôi thành .bak_24_04, đại ca quất bộ lệnh này cho cả 2 trang (WP và Laravel)
