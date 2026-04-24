@@ -319,7 +319,7 @@ chmod -R 775 storage bootstrap/cache
 
 🛠️ Bước 3: Ép Nginx nhận PHP 8.1 (Để hết hẳn lỗi Version)
 ```
-dán nốt đoạn cấu hình này để Nginx nó dẫn đường đúng vào PHP 8.1 cho đại ca:
+dán nốt đoạn cấu hình này để Nginx nó dẫn đường đúng vào PHP 8.1 cho:
 
 cat <<EOF > /etc/nginx/conf.d/laravel_final_fix.conf
 server {
