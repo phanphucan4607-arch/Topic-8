@@ -179,3 +179,72 @@ chmod -R 755 /home/admin/web/phucan.vietnix.tech/public_html
 
 chmod -R 775 wp-content/uploads
 ```
+```
+4. cấu hình biến môi trường
+Với Laravel:
+
+nano .env
+# Sửa: DB_DATABASE, DB_USERNAME, DB_PASSWORD, APP_URL
+
+
+Với WordPress:
+Bash
+
+nano wp-config.php
+# Sửa: DB_NAME, DB_USER, DB_PASSWORD
+```
+
+**5. Khởi động lại hệ thống**
+```
+systemctl restart apache2
+
+systemctl restart nginx
+
+systemctl restart php81-fpm  # (Hoặc bản PHP đang dùng)
+```
+
+#### 🚀 Giai đoạn 4: Cấu hình Web Server trỏ vào thư mục /public
+Sau khi đã bốc code lên và phân quyền xong, ta cần thực hiện bước này để Apache và Nginx biết đường dẫn chính xác vào "tim" của Laravel và wordress.
+```
+1. Sửa cấu hình Apache (DocumentRoot)
+
+Apache là thằng xử lý file PHP phía sau. Ông cần sửa cả file chạy thường và file SSL.
+
+    File thường: /home/admin/conf/web/domain.com.apache2.conf
+
+    File SSL: /home/admin/conf/web/domain.com.apache2.ssl.conf
+
+Nội dung cần sửa: Tìm dòng DocumentRoot và thẻ <Directory>, thêm /public vào cuối đường dẫn.
+
+    Ví dụ: /home/admin/web/domain.com/public_html
+
+    Thành: /home/admin/web/domain.com/public_html/public
+```
+```
+2. Sửa cấu hình Nginx (Root)
+
+Nginx đóng vai trò là "người gác cổng" phía trước. Ông cũng cần sửa 2 file tương tự.
+
+    File thường: /home/admin/conf/web/domain.com.nginx.conf
+
+    File SSL: /home/admin/conf/web/domain.com.nginx.ssl.conf
+
+Nội dung cần sửa: Tìm dòng root, thêm /public vào cuối.
+
+    Ví dụ: root /home/admin/web/domain.com/public_html;
+
+    Thành: root /home/admin/web/domain.com/public_html/public;
+```
+
+```
+# Kiểm tra xem có gõ sai cú pháp không (nếu không báo lỗi gì là OK)
+nginx -t
+
+apache2ctl -t
+
+# Restart để áp dụng
+
+systemctl restart apache2
+
+systemctl restart nginx
+```
