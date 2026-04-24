@@ -12,7 +12,7 @@
 
 + của laravel: /etc/letsencrypt/live/laravel.phucan.vietnix.tech/
 
-<img width="1194" height="319" alt="image" src="https://github.com/user-attachments/assets/3e07e169-3ed6-45c9-b3b5-7706887af39e" />
+<img width="1562" height="235" alt="image" src="https://github.com/user-attachments/assets/4b137e80-3a47-4ff9-84fe-66ce5ffee334" />
 
 + của wordress: /home/admin/conf/web/ssl.wp.phucan.vietnix.tech.*
 
