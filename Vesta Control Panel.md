@@ -369,7 +369,7 @@ chạy 2 lệnh này cho 2 tên miền tương ứng (Nhớ chạy với quyền
 
 nginx -t && systemctl restart nginx
 
-Sau khi chạy lệnh trên mà thấy nó "không báo gì" (tức là thành công), đại ca nên bồi thêm một lệnh restart để các Web Server (Nginx/Apache) nạp chứng chỉ mới vào bộ nhớ ngay:
+Sau khi chạy lệnh trên mà thấy nó "không báo gì" (tức là thành công),  nên bồi thêm một lệnh restart để các Web Server (Nginx/Apache) nạp chứng chỉ mới vào bộ nhớ ngay:
 
 systemctl restart nginx apache2
 
