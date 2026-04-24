@@ -14,6 +14,10 @@
 
 <img width="1194" height="319" alt="image" src="https://github.com/user-attachments/assets/3e07e169-3ed6-45c9-b3b5-7706887af39e" />
 
++ của wordress: /home/admin/conf/web/ssl.wp.phucan.vietnix.tech.*
+
+
+<img width="1562" height="235" alt="image" src="https://github.com/user-attachments/assets/5bc4eae9-d48a-412e-82e9-6a6cf7b31c26" />
 
 
 + Cấp cho wordress 
