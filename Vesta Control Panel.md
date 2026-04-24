@@ -243,6 +243,10 @@ nginx -t
 apache2ctl -t
 
 # Restart để áp dụng
+```
+
+#### trường hợp khi làm gặp looix và cách fix 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/259df2bb-0b40-4e34-a6d5-b625699b8b78" />
 
 systemctl restart apache2
 
