@@ -354,14 +354,17 @@ Lệnh cấp SSL Let's Encrypt (Dành cho VestaCP)
 Ông chạy 2 lệnh này cho 2 tên miền tương ứng (Nhớ chạy với quyền root nhé):
 
 1. Cho trang WordPress:
-Bash
 
 /usr/local/vesta/bin/v-add-letsencrypt-domain admin wp.phucan.vietnix.tech
 
 2. Cho trang Laravel:
-Bash
 
 /usr/local/vesta/bin/v-add-letsencrypt-domain admin laravel.phucan.vietnix.tech
 ```
 nginx -t && systemctl restart nginx
-````
+
+Sau khi chạy lệnh trên mà thấy nó "không báo gì" (tức là thành công), đại ca nên bồi thêm một lệnh restart để các Web Server (Nginx/Apache) nạp chứng chỉ mới vào bộ nhớ ngay:
+
+systemctl restart nginx apache2
+
+```
