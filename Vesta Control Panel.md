@@ -292,24 +292,29 @@ Sau khi code đã ra đúng chỗ, ông dán mống này vào:
 
 # 1. Tải và cài Composer bản 8.1
 php81 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
 php81 composer-setup.php
+
 php81 -r "unlink('composer-setup.php');"
 
 # 2. Cài đặt thư viện (Bỏ qua kiểm tra version để nó lọt qua bước cài đặt)
+
 php81 composer.phar install --ignore-platform-reqs
 
 # 3. Tạo file môi trường và Key (Nếu chưa có)
 [ ! -f .env ] && cp .env.example .env
+
 php81 artisan key:generate
 
 # 4. Cấp quyền cho admin
+
 chown -R admin:admin .
+
 chmod -R 775 storage bootstrap/cache
 
 🛠️ Bước 3: Ép Nginx nhận PHP 8.1 (Để hết hẳn lỗi Version)
 
 Ông dán nốt đoạn cấu hình này để Nginx nó dẫn đường đúng vào PHP 8.1 cho đại ca:
-Bash
 
 cat <<EOF > /etc/nginx/conf.d/laravel_final_fix.conf
 server {
