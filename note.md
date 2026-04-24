@@ -32,7 +32,7 @@ mv ssl.laravel.phucan.vietnix.tech.ca ssl.laravel.phucan.vietnix.tech.ca.bak_24_
 **Mở Terminal ở máy cá nhân Ubuntu**
 
 ```
-# 1. Tạo thư mục chứa trên máy ông
+# 1. Tạo thư mục chứa trên máy
 mkdir -p ~/Downloads/SSL_FULL_BACKUP_24_04
 cd ~/Downloads/SSL_FULL_BACKUP_24_04
 
