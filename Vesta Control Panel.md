@@ -248,7 +248,29 @@ apache2ctl -t
 #### trường hợp khi làm gặp looix và cách fix 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/259df2bb-0b40-4e34-a6d5-b625699b8b78" />
 
+
+Chính vì VestaCP của mình  không có cái nút ép HTTPS tự động đó, nên cái "liều thuốc" tui kê cho ông đưa vào file wp-config.php là bắt buộc 100% phải có để trị dứt điểm cái bệnh "Vòng lặp 301".
+
+```
+
+nano wp-config.php
+
+Bước 3: Dán "Kháng sinh liều cao"
+Xóa cái đoạn if (isset... cũ đi (nếu có), dán 4 dòng chốt hạ này ngay dưới dòng <?php:
+PHP
+
+$_SERVER['HTTPS'] = 'on';
+$_SERVER['SERVER_PORT'] = 443;
+$_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
+
+define('WP_HOME','https://wp.phucan.vietnix.tech');
+define('WP_SITEURL','https://wp.phucan.vietnix.tech');
+````
 systemctl restart apache2
 
 systemctl restart nginx
-```
+
+lỗi php
+<img width="1822" height="657" alt="image" src="https://github.com/user-attachments/assets/a139c2cf-2afd-4ff1-9e46-12638f427a6f" />
+
+
