@@ -122,5 +122,60 @@ php81 -v
 
 <img width="1229" height="608" alt="image" src="https://github.com/user-attachments/assets/925fe91d-f9bf-4d96-bebf-92d5a88ffd70" />
 
++ vào phpmyadmn import data
++ cho wordress
+  <img width="1822" height="657" alt="image" src="https://github.com/user-attachments/assets/b87f3042-b6fd-45f5-9ca8-af5356e8a890" />
+
++ cho lara
+  <img width="1822" height="657" alt="image" src="https://github.com/user-attachments/assets/f2ffd61a-c4bc-44a5-9d22-2a7fadd36874" />
+
 # 🚀 Giai đoạn 3: "Bốc" Source Code vào Server (Dùng Terminal)
 
+```
+# Đối với Laravel:
+scp /đường/dẫn/laravel_clean.tar.gz root@221.132.21.141:/home/admin/tmp/
+
+# Đối với WordPress:
+scp /đường/dẫn/wp_source.tar.gz root@221.132.21.141:/home/admin/tmp/
+```
+```
+2. Di chuyển & Giải nén (Làm tại SSH VPS)
+# 1. Truy cập vào thư mục web (Thay đổi theo domain tương ứng)
+cd /home/admin/web/laravel.phucan.vietnix.tech/public_html/
+
+# 2. Hốt file từ tmp về đây
+mv /home/admin/tmp/*.tar.gz .
+
+# 3. Giải nén (Xóa sạch file index.html mặc định trước nếu có)
+rm -f index.html
+tar -xzvf *.tar.gz
+
+# 4. Dọn dẹp xác file nén
+rm -f *.tar.gz
+   ``` 
+
+ ```
+3. Thiết lập "Quyền sinh tử" (Phân quyền Folder)
+Đây là bước quan trọng nhất để Web không bị lỗi 403 Forbidden hoặc 500 Internal Server Error.
+A. Đối với Laravel:
+
+# Trả quyền sở hữu cho admin
+chown -R admin:admin /home/admin/web/laravel.phucan.vietnix.tech/public_html
+
+# Cấp quyền ghi đặc biệt (Bắt buộc)
+
+chmod -R 775 storage
+
+chmod -R 775 bootstrap/cache
+
+B. Đối với WordPress:
+
+# Trả quyền sở hữu cho admin
+chown -R admin:admin /home/admin/web/phucan.vietnix.tech/public_html
+
+# Cấp quyền để upload ảnh và cài plugin không bị hỏi mật khẩu FTP
+
+chmod -R 755 /home/admin/web/phucan.vietnix.tech/public_html
+
+chmod -R 775 wp-content/uploads
+```
