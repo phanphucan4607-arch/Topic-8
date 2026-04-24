@@ -271,6 +271,76 @@ systemctl restart apache2
 systemctl restart nginx
 
 lỗi php
+
 <img width="1822" height="657" alt="image" src="https://github.com/user-attachments/assets/a139c2cf-2afd-4ff1-9e46-12638f427a6f" />
+```
+
+cd /home/admin/web/laravel.phucan.vietnix.tech/public_html/
+
+mv laravel.phucan.vietnix.tech/* . 2>/dev/null
+
+mv laravel.phucan.vietnix.tech/.* . 2>/dev/null
+
+rm -rf laravel.phucan.vietnix.tech
 
 
+
+🛠️ Bước 2: Chạy bộ lệnh ông vừa hỏi (Cài đặt "ruột gan")
+
+Sau khi code đã ra đúng chỗ, ông dán mống này vào:
+
+
+# 1. Tải và cài Composer bản 8.1
+php81 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php81 composer-setup.php
+php81 -r "unlink('composer-setup.php');"
+
+# 2. Cài đặt thư viện (Bỏ qua kiểm tra version để nó lọt qua bước cài đặt)
+php81 composer.phar install --ignore-platform-reqs
+
+# 3. Tạo file môi trường và Key (Nếu chưa có)
+[ ! -f .env ] && cp .env.example .env
+php81 artisan key:generate
+
+# 4. Cấp quyền cho admin
+chown -R admin:admin .
+chmod -R 775 storage bootstrap/cache
+
+🛠️ Bước 3: Ép Nginx nhận PHP 8.1 (Để hết hẳn lỗi Version)
+
+Ông dán nốt đoạn cấu hình này để Nginx nó dẫn đường đúng vào PHP 8.1 cho đại ca:
+Bash
+
+cat <<EOF > /etc/nginx/conf.d/laravel_final_fix.conf
+server {
+    listen      221.132.21.141:80;
+    server_name laravel.phucan.vietnix.tech;
+    return 301 https://\$host\$request_uri;
+}
+
+server {
+    listen      221.132.21.141:443 ssl;
+    server_name laravel.phucan.vietnix.tech;
+
+    ssl_certificate      /home/admin/conf/web/ssl.laravel.phucan.vietnix.tech.crt;
+    ssl_certificate_key  /home/admin/conf/web/ssl.laravel.phucan.vietnix.tech.key;
+
+    root /home/admin/web/laravel.phucan.vietnix.tech/public_html/public;
+    index index.php index.html;
+
+    location / {
+        try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php81-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+EOF
+
+# Restart Nginx
+nginx -t && systemctl restart nginx
+````
