@@ -245,7 +245,8 @@ apache2ctl -t
 # Restart để áp dụng
 ```
 
-#### trường hợp khi làm gặp looix và cách fix 
+### trường hợp khi làm gặp looix và cách fix 
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/259df2bb-0b40-4e34-a6d5-b625699b8b78" />
 
 
@@ -265,12 +266,14 @@ $_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
 
 define('WP_HOME','https://wp.phucan.vietnix.tech');
 define('WP_SITEURL','https://wp.phucan.vietnix.tech');
-````
+
+
 systemctl restart apache2
 
 systemctl restart nginx
+```
 
-lỗi php
+ ## lỗi php
 
 <img width="1822" height="657" alt="image" src="https://github.com/user-attachments/assets/a139c2cf-2afd-4ff1-9e46-12638f427a6f" />
 ```
@@ -283,10 +286,10 @@ mv laravel.phucan.vietnix.tech/.* . 2>/dev/null
 
 rm -rf laravel.phucan.vietnix.tech
 
-
+```
 
 🛠️ Bước 2: Chạy bộ lệnh ông vừa hỏi (Cài đặt "ruột gan")
-
+```
 Sau khi code đã ra đúng chỗ, ông dán mống này vào:
 
 
@@ -311,9 +314,10 @@ php81 artisan key:generate
 chown -R admin:admin .
 
 chmod -R 775 storage bootstrap/cache
+```
 
 🛠️ Bước 3: Ép Nginx nhận PHP 8.1 (Để hết hẳn lỗi Version)
-
+```
 Ông dán nốt đoạn cấu hình này để Nginx nó dẫn đường đúng vào PHP 8.1 cho đại ca:
 
 cat <<EOF > /etc/nginx/conf.d/laravel_final_fix.conf
@@ -349,6 +353,7 @@ EOF
 # Restart Nginx
 
 ```
+```
 Lệnh cấp SSL Let's Encrypt (Dành cho VestaCP)
 
 Ông chạy 2 lệnh này cho 2 tên miền tương ứng (Nhớ chạy với quyền root nhé):
@@ -360,7 +365,7 @@ Lệnh cấp SSL Let's Encrypt (Dành cho VestaCP)
 2. Cho trang Laravel:
 
 /usr/local/vesta/bin/v-add-letsencrypt-domain admin laravel.phucan.vietnix.tech
-```
+
 nginx -t && systemctl restart nginx
 
 Sau khi chạy lệnh trên mà thấy nó "không báo gì" (tức là thành công), đại ca nên bồi thêm một lệnh restart để các Web Server (Nginx/Apache) nạp chứng chỉ mới vào bộ nhớ ngay:
