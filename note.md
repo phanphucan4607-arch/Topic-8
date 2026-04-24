@@ -14,7 +14,7 @@
 
 🛠️  **Lệnh Backup**
 
- đuôi thành .bak_24_04, đại ca quất bộ lệnh này cho cả 2 trang (WP và Laravel)
+ đuôi thành .bak_24_04, cho cả 2 trang (WP và Laravel)
 
 ```
  cd /home/admin/conf/web/
